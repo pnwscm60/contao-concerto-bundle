@@ -11,7 +11,7 @@
 namespace Pnwscm60\ConcertoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
+/* Configure the Contao Concerto Bundle */
 class Pnwscm60ConcertoBundle extends Bundle
 {
 }
