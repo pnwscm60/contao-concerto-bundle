@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pnwscm60\\ContaoConcertoBundle\\": "src/"
+            "Pnwscm60\\ConcertoBundle\\": "src/"
         }
     },
     "classmap": [
@@ -37,6 +37,6 @@
                    "src/Resources/contao/templates/"
 		],
     "extra": {
-         "contao-manager-plugin": "Pnwscm60\\ContaoConcertoBundle\\ContaoManager\\Plugin"
+         "contao-manager-plugin": "Pnwscm60\\ConcertoBundle\\ContaoManager\\Plugin"
     }
 }
