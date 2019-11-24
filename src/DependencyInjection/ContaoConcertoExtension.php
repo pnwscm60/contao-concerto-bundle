@@ -8,7 +8,7 @@
  * @license LGPL-3.0-or-later
  */
  
- namespace Pnwscm60\ContaoConcertoBundle\DependencyInjection;
+namespace Pnwscm60\ContaoConcertoBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
