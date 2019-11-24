@@ -12,14 +12,14 @@ use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use Pnwscm60\ContaoConcertoBundle\ContaoConcertoBundle;
+use Pnwscm60\ContaoConcertoBundle\Pnwscm60ContaoConcertoBundle;
 
 class Plugin implements BundlePluginInterface
 {
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create(ContaoConcertoBundle::class)
+            BundleConfig::create(Pnwscm60ContaoConcertoBundle::class)
                 ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
