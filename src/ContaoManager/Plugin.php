@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of Concerto.
  *
@@ -7,7 +6,6 @@
  *
  * @license LGPL-3.0-or-later
  */
-
 namespace Pnwscm60\ContaoConcertoBundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
@@ -18,7 +16,7 @@ use Pnwscm60\ContaoConcertoBundle\ContaoConcertoBundle;
 
 class Plugin implements BundlePluginInterface
 {
-    public function getBundles(ParserInterface $parser)
+    public function getBundles(ParserInterface $parser): array
     {
         return [
             BundleConfig::create(ContaoConcertoBundle::class)
