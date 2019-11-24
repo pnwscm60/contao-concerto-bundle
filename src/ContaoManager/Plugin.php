@@ -6,21 +6,21 @@
  *
  * @license LGPL-3.0-or-later
  */
-namespace Pnwscm60\ContaoConcertoBundle\ContaoManager;
+namespace Pnwscm60\ConcertoBundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use Pnwscm60\ContaoConcertoBundle\Pnwscm60ContaoConcertoBundle;
 
 class Plugin implements BundlePluginInterface
 {
-    public function getBundles(ParserInterface $parser): array
+    public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(Pnwscm60ContaoConcertoBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class]),
+            BundleConfig::create('Pnwscm60\ConcertoBundle\Pnwscm60ConcertoBundle')
+                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
+                ->setReplace(['concerto']),
         ];
     }
 }
