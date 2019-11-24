@@ -37,6 +37,6 @@
                    "src/Resources/contao/templates/"
 		],
     "extra": {
-         "contao-manager-plugin": "Pnwscm60\\ConcertoBundle\\ContaoManager\\Plugin"
+         "contao-manager-plugin": "Pnwscm60\\ContaoConcertoBundle\\ContaoManager\\Plugin"
     }
 }
