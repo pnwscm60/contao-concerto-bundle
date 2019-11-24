@@ -1,0 +1,60 @@
+<?php /*
+$objUser = FrontendUser::getInstance();
+$nkurz = $objUser->nkurz;
+if (FE_USER_LOGGED_IN === true) : //alles folgende nur fÃ¼r eingeloggte User!
+if ($objUser->isMemberOf(1)) :
+    // der Benutzer gehÃ¶rt der Gruppe mit der ID 1 an
+*/?>
+<?php // *** WERKLISTE *** ?>
+<?php //if($this->todo=='wlist' || $this->todo==''):?>
+    <div class="wlist">
+        <div class="titzeile">
+            <div class="comp">
+                Komponist
+            </div>
+            <div class="title">
+                Werktitel
+            </div>
+        </div>
+        <?php foreach($this->allcat as $cat):?>
+            <div class="comp">
+                <?php echo $cat['komponist'];?>
+            </div>
+            <div class="title">
+                <?php echo $cat['title'];?>
+            </div>
+            <div class="icons">
+                <a href=""><img src="files/images/edit.png" style="width:26px;"></a>
+                <a href=""><img src="files/images/besetzung.png" style="width:26px;"></a>
+            </div>
+        <?php endforeach;?>
+    </div>
+<?php //endif;?>
+<?php // *** WERK EDITIEREN *** ?>
+<?php if($this->todo=='edcat'):?>
+  <form action="Werke.html" method="post" enctype="application/x-www-form-urlencoded">
+  <div class="formbody">
+      <input type="hidden" name="FORM_SUBMIT" value="auto_form_3">
+      <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+      <input type="hidden" name="cid" value="<?php echo $this->allcat['cid']?>">
+      <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="widget widget-text form-group">
+                  <input class="form-control" id="ctrl_12" name="Komponist" type="text" value="<?php echo $this->allcat['komponist']?>" placeholder="Komponist">
+              </div>
+              <div class="widget widget-text form-group">
+                  <input class="form-control" id="ctrl_11" name="title" type="text" value="<?php echo $this->allcat['title']?>" placeholder="Werktitel">
+              </div>
+              <div class="widget widget-text form-group">
+                  <input class="form-control" id="ctrl_13" name="Besetzung" type="text" value="<?php echo $this->allcat['besetzung']?>" placeholder="Besetzung">
+              </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <div class="widget widget-submit form-group">
+                  <button class="submit btn btn-primary" id="ctrl_17" name="" alt="Werk speichern" title="Werk speichern">Werk speichern</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  </form>
+<?php endif; ?>
