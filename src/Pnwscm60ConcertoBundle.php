@@ -8,10 +8,10 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace Pnwscm60\ContaoConcertoBundle;
+namespace Pnwscm60\ConcertoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ContaoConcertoBundle extends Bundle
+class Pnwscm60ConcertoBundle extends Bundle
 {
 }
