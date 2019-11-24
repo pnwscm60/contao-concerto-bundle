@@ -26,5 +26,8 @@
         "psr-4": {
             "Pnwscm60\\ContaoConcertoBundle\\": "src/"
         }
+    },
+    "extra": {
+         "contao-manager-plugin": "Pnwscm60\\ContaoConcertoBundle\\ContaoManager\\Plugin"
     }
 }
