@@ -8,14 +8,14 @@
  * @license LGPL-3.0-or-later
  */
  
-namespace Pnwscm60\ContaoConcertoBundle\DependencyInjection;
+namespace Pnwscm60\ConcertoBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class ContaoConcertoExtension extends Extension
+class Pnwscm60ConcertoExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
