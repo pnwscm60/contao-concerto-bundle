@@ -26,5 +26,5 @@
         "psr-4": {
             "Pnwscm60\\ContaoConcertoBundle\\": "src/"
         }
-    },
+    }
 }
