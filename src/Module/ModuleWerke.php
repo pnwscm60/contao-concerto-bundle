@@ -54,7 +54,7 @@ class ModuleWerke extends \Contao\Module
         }
         
         /*** WERKLISTE ***/
-        if($_REQUEST['trg']=='catlist' || $sedit ==1 || $_REQUEST['trg']==''){
+        //if($_REQUEST['trg']=='catlist' || $sedit ==1 || $_REQUEST['trg']==''){
             $sql="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
 		    $stat = $db->executeQuery($sql);
             while ($objCat = $stat->fetchAll())
@@ -68,7 +68,7 @@ class ModuleWerke extends \Contao\Module
 		}
         $this->Template->allcat = $arrCat;
         $this->Template->todo = 'wlist';
-        }
+        //}
            
         /*** WERK LÖSCHEN ***/
             if($_REQUEST['trg']=='delcat'){
