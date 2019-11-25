@@ -24,16 +24,26 @@ class ModuleWerke extends \Contao\Module
 	protected function compile()
 	{
         //DATENBANK-VERBINDUNG
-        //$db = \Contao\System::getContainer()->get('database_connection'); 
+        $db = \Contao\System::getContainer()->get('database_connection'); 
   
         //memberid = frontendUser
         //$this->import('FrontendUser', 'User');
 	//	$userid = $this->User->id;
         
-       
-        
         /*** WERKLISTE ***/
-        echo "Werkliste";
+        $sql="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
+		    $stat = $db->executeQuery($sql);
+            while ($objCat = $stat->fetchAll())
+		      {
+			$arrCat[] = array(
+				'cid' => $objCat->cid,
+				'title' => $objCat->title,
+                'komponist' => $objCat->komponist,
+                'besetzung' => $objCat->besetzung,
+			);
+		}
+        $this->Template->allcat = $arrCat;
+        $this->Template->todo = 'wlist';
            
        
     }
