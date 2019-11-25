@@ -38,4 +38,3 @@ class ModuleWerke extends \Contao\Module
        
     }
 }
-?>
