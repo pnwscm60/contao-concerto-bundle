@@ -1,5 +1,5 @@
 <?php
-namespace Pnwscm60\ConcertoBundle;
+namespace Pnwscm60\ConcertoBundle\Module;
 class ModuleWerke extends \Contao\Module
 {
 	/**
