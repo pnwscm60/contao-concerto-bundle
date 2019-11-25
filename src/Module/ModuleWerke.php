@@ -24,7 +24,7 @@ class ModuleWerke extends \Contao\Module
 	protected function compile()
 	{
         //DATENBANK-VERBINDUNG
-        $db = \Contao\System::getContainer()->get('database_connection'); 
+        //$db = \Contao\System::getContainer()->get('database_connection'); 
   
         //memberid = frontendUser
         //$this->import('FrontendUser', 'User');
