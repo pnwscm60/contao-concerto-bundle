@@ -1,13 +1,6 @@
-<?php /*
-$objUser = FrontendUser::getInstance();
-$nkurz = $objUser->nkurz;
-if (FE_USER_LOGGED_IN === true) : //alles folgende nur fÃ¼r eingeloggte User!
-if ($objUser->isMemberOf(1)) :
-    // der Benutzer gehÃ¶rt der Gruppe mit der ID 1 an
-*/?>
+<?php 
 <?php // *** WERKLISTE *** ?>
 <h2>Werkliste</h2>
-<?php //if($this->todo=='wlist' || $this->todo==''):?>
     <div class="wlist">
         <div class="titzeile">
             <div class="comp">
@@ -30,7 +23,6 @@ if ($objUser->isMemberOf(1)) :
             </div>
         <?php endforeach;?>
     </div>
-<?php //endif;?>
 <?php // *** WERK EDITIEREN *** ?>
 <?php if($this->todo=='edcat'):?>
   <form action="Werke.html" method="post" enctype="application/x-www-form-urlencoded">
