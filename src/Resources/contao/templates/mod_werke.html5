@@ -23,6 +23,8 @@
             </div>
         <?php endforeach;?>
     </div>
+    
+   <?php echo $this->todo;?>
 <?php // *** WERK EDITIEREN *** ?>
 <?php if($this->todo=='edcat'):?>
   <form action="Werke.html" method="post" enctype="application/x-www-form-urlencoded">
