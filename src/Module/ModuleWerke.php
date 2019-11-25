@@ -25,15 +25,22 @@ class ModuleWerke extends \Contao\Module
 	{
         //DATENBANK-VERBINDUNG
         $db = \Contao\System::getContainer()->get('database_connection'); 
-  
         //memberid = frontendUser
         //$this->import('FrontendUser', 'User');
 	//	$userid = $this->User->id;
-        
-        /*** WERKLISTE ***/
-        $sql="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
-	$stat = $db->executeQuery($sql)->fetch();
-           echo $stat->komponist;
+	 /*** WERKLISTE ***/	
+	$this->import('Database');
+        $sql ="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
+        $result = $this->Database->prepare($sql)->execute();
+        while($result->next())
+        {
+            $arrCat[] = array(
+		'cid' => $result->cid,
+		'title' => $result->title,
+                'komponist' => $result->komponist,
+                'besetzung' => $result->besetzung,
+			);
+        }
         $this->Template->allcat = $arrCat;
         $this->Template->todo = 'wlist';
     }
