@@ -6,6 +6,7 @@ if ($objUser->isMemberOf(1)) :
     // der Benutzer gehÃ¶rt der Gruppe mit der ID 1 an
 */?>
 <?php // *** WERKLISTE *** ?>
+<h2>Werkliste</h2>
 <?php //if($this->todo=='wlist' || $this->todo==''):?>
     <div class="wlist">
         <div class="titzeile">
