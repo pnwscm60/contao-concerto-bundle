@@ -32,14 +32,14 @@ class ModuleWerke extends \Contao\Module
         
         /*** WERKLISTE ***/
         $sql="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
-		    $stat = $db->executeQuery($sql);
-            while ($objCat = $stat->fetchAll())
+	$stat = $db->executeQuery($sql);
+            while ($objCat = $stat->fetch())
 		      {
 			$arrCat[] = array(
 				'cid' => $objCat->cid,
 				'title' => $objCat->title,
-                'komponist' => $objCat->komponist,
-                'besetzung' => $objCat->besetzung,
+                		'komponist' => $objCat->komponist,
+                		'besetzung' => $objCat->besetzung,
 			);
 		}
         $this->Template->allcat = $arrCat;
