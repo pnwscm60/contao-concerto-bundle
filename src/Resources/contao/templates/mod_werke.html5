@@ -26,6 +26,7 @@
     
    <?php echo $this->todo;?>
 <?php // *** WERK EDITIEREN *** ?>
+<?php /* ?>
 <?php if($this->todo=='edcat'):?>
   <form action="Werke.html" method="post" enctype="application/x-www-form-urlencoded">
   <div class="formbody">
@@ -52,4 +53,4 @@
       </div>
   </div>
   </form>
-<?php endif; ?>
+<?php endif; */ ?>
