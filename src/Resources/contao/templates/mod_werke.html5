@@ -9,7 +9,7 @@
                 Werktitel
             </div>
         </div>
-        <?php /* foreach($this->allcat as $cat):?>
+        <?php foreach($this->allcat as $cat):?>
             <div class="comp">
                 <?php echo $cat['komponist'];?>
             </div>
@@ -20,6 +20,6 @@
                 <a href=""><img src="files/images/edit.png" style="width:26px;"></a>
                 <a href=""><img src="files/images/besetzung.png" style="width:26px;"></a>
             </div>
-        <?php endforeach; */?>
+        <?php endforeach;?>
     </div>
     
