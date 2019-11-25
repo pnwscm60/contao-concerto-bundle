@@ -27,8 +27,8 @@ class ModuleWerke extends \Contao\Module
         $db = \Contao\System::getContainer()->get('database_connection'); 
   
         //memberid = frontendUser
-        $this->import('FrontendUser', 'User');
-		$userid = $this->User->id;
+        //$this->import('FrontendUser', 'User');
+	//	$userid = $this->User->id;
         
         /*** EDITIERTE DATEN SPEICHERN ***/
         if($_REQUEST['trg']=='swerked'){
@@ -54,21 +54,7 @@ class ModuleWerke extends \Contao\Module
         }
         
         /*** WERKLISTE ***/
-        //if($_REQUEST['trg']=='catlist' || $sedit ==1 || $_REQUEST['trg']==''){
-            $sql="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
-		    $stat = $db->executeQuery($sql);
-            while ($objCat = $stat->fetchAll())
-		      {
-			$arrCat[] = array(
-				'cid' => $objCat->cid,
-				'title' => $objCat->title,
-                'komponist' => $objCat->komponist,
-                'besetzung' => $objCat->besetzung,
-			);
-		}
-        $this->Template->allcat = $arrCat;
-        $this->Template->todo = 'wlist';
-        //}
+        echo "Werkliste";
            
         /*** WERK LÖSCHEN ***/
             if($_REQUEST['trg']=='delcat'){
