@@ -35,6 +35,7 @@ class ModuleWerke extends \Contao\Module
 	$stat = $db->executeQuery($sql);
             while ($objCat = $stat->fetch())
 		      {
+		    	echo "T:".$objCat->title." K:".$objCat->komponist;
 			$arrCat[] = array(
 				'cid' => $objCat->cid,
 				'title' => $objCat->title,
@@ -44,7 +45,5 @@ class ModuleWerke extends \Contao\Module
 		}
         $this->Template->allcat = $arrCat;
         $this->Template->todo = 'wlist';
-        var_dump($arrCat);   
-       
     }
 }
