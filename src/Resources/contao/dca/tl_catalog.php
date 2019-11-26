@@ -1,9 +1,9 @@
 <?php
-/**
-DCA für concerto: tl_catalog
-© 2016 Markus Schenker, Phi Network
- */
-/**
+/*
+** DCA für concerto: tl_catalog
+** © 2016 Markus Schenker, Phi Network
+*/
+/*
  * Table tl_catalog
  */
 $GLOBALS['TL_DCA']['tl_catalog'] = array
@@ -103,6 +103,17 @@ $GLOBALS['TL_DCA']['tl_catalog'] = array
 		'komponist' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_catalog']['komponist'],
+			'inputType'               => 'text',
+			'exclude'                 => true,
+			'sorting'                 => true,
+			'flag'                    => 11,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>true, 'unique'=>false, 'maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'komponistvn' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_catalog']['komponistvn'],
 			'inputType'               => 'text',
 			'exclude'                 => true,
 			'sorting'                 => true,
