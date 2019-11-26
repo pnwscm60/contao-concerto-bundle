@@ -11,7 +11,7 @@
         </div>
         <?php foreach($this->allcat as $cat):?>
             <div class="comp">
-                <?php echo $cat['komponist'];?>
+                <?php echo $cat['komponist']." ".$cat['komponistvn'];?>
             </div>
             <div class="title">
                 <?php echo $cat['title'];?>
