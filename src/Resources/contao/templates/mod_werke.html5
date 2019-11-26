@@ -17,8 +17,8 @@
                 <?php echo $cat['title'];?>
             </div>
             <div class="icons">
-                <a href=""><img src="files/images/edit.svg" style="width:26px;"></a>
-                <a href=""><img src="files/images/change.svg" style="width:26px;"></a>
+                <a href=""><img src="files/images/edit.svg"></a>
+                <a href=""><img src="files/images/change.svg"></a>
             </div>
         <?php endforeach;?>
     </div>
