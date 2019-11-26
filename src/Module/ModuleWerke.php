@@ -23,13 +23,10 @@ class ModuleWerke extends \Contao\Module
 	 */
 	protected function compile()
 	{
-        //DATENBANK-VERBINDUNG
-        $db = \Contao\System::getContainer()->get('database_connection'); 
-       
-	/* DB abfrage via Doctrine*/
-	$sql ="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";	
-        $stmt = $db->executeQuery($sql);
-	while($result = $stmt->fetch())
+        $this->import('Database');
+        $sql ="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
+        $result = $this->Database->prepare($sql)->execute();
+        while($result->next())
         {
             $arrCat[] = array(
 		'cid' => $result->cid,
