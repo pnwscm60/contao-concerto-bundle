@@ -28,9 +28,8 @@ class ModuleWerke extends \Contao\Module
        
 	/* DB abfrage via Doctrine*/
 	$sql ="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";	
-        $stmt = $db->prepare($sql);
-	$stmt->execute();
-	while($result->$stmt->fetch())
+        $stmt = $db->executeQuery($sql);
+	while($result = $stmt->fetch())
         {
             $arrCat[] = array(
 		'cid' => $result->cid,
