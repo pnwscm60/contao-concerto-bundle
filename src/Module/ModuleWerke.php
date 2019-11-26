@@ -24,7 +24,7 @@ class ModuleWerke extends \Contao\Module
 	protected function compile()
 	{
         $this->import('Database');
-        $sql ="SELECT tl_catalog.id as cid, komponist, title, besetzung FROM tl_catalog ORDER by komponist, title";
+        $sql ="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog ORDER by komponist, title";
         $result = $this->Database->prepare($sql)->execute();
         while($result->next())
         {
@@ -32,6 +32,7 @@ class ModuleWerke extends \Contao\Module
 		'cid' => $result->cid,
 		'title' => $result->title,
                 'komponist' => $result->komponist,
+		'komponistvn' => $result->komponist,
                 'besetzung' => $result->besetzung,
 			);
         }
