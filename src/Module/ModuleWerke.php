@@ -32,7 +32,7 @@ class ModuleWerke extends \Contao\Module
 		'cid' => $result->cid,
 		'title' => $result->title,
                 'komponist' => $result->komponist,
-		'komponistvn' => $result->komponist,
+		'komponistvn' => $result->komponistvn,
                 'besetzung' => $result->besetzung,
 			);
         }
