@@ -32,6 +32,7 @@ class ModuleWerke extends \Contao\Module
             $sql="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog WHERE tl_catalog.id = ?";
 		echo $sql;
 		$result = $this->database->prepare($sql)->execute($catid);
+		echo $result;
             	$this->Template->cid = $result->cid;
             	$this->Template->title = $result->title;
 		$this->Template->komponistvn = $result->komponistvn;
