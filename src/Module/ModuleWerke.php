@@ -51,8 +51,10 @@ class ModuleWerke extends \Contao\Module
 		$this->Template->epoche = $result->epoche;
             	$this->Template->todo = 'edcat';
         }
-		
-        $sql ="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog ORDER by komponist, title";
+	if($_REQUEST['trg']=='newwerk'){	
+        	$this->Template->todo = 'newcat';
+	}
+	$sql ="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog ORDER by komponist, title";
         $result = $this->Database->prepare($sql)->execute();
         while($result->next())
         {
