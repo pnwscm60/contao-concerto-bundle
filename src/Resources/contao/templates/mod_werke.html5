@@ -3,13 +3,13 @@
 
 <h2>Werkliste<div style="float:right;"><a href="werkliste.html?trg=newwerk"><button class="submit btn btn-primary">Neues Werk</button></a></div></h2>
 	<?php /** NEUES WERK **/ ?>
-	<div style="display:none;
+	
 	<?php if($this->todo=='newcat'):
-    	echo 'display:block;';
+    	{{insert_content::3}}
 	endif;?>
-    ">
-	{{insert_content::3}}
-	</div>
+
+	
+	
 	<div class="wlist" style="
     <?php if($this->todo=='edcat'||$this->todo=='newcat'):
     	echo 'display:none;';
