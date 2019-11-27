@@ -33,20 +33,22 @@ class ModuleWerke extends \Contao\Module
             $komponist = $_REQUEST['komponist'];
 			$komponistvn = $_REQUEST['komponistvn'];
             $besetzung = $_REQUEST['besetzung'];
-            $set = "title = '$title', komponist = '$komponist', komponistvn = '$komponistvn', besetzung = '$besetzung'";
+            $set = "title = '$title', komponist = '$komponist', komponistvn = '$komponistvn', besetzung = '$besetzung', typ = $typ, epoche = $epoche";
             $this->Database->prepare("UPDATE tl_catalog SET $set WHERE id=$cid;")->execute();
 		$sedit = '1';
         }
 	/*** ZU EDITIERENDE DATEN ABRUFEN ***/
         if($_REQUEST['trg']=='werked'){
             $catid = $_REQUEST['cid']; // key
-            $sql="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog WHERE tl_catalog.id = $catid;";
+            $sql="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung, typ, epoche FROM tl_catalog WHERE tl_catalog.id = $catid;";
 			$result = $this->Database->prepare($sql)->execute();
             	$this->Template->cid = $result->cid;
             	$this->Template->title = $result->title;
 				$this->Template->komponistvn = $result->komponistvn;
             	$this->Template->komponist = $result->komponist;
             	$this->Template->besetzung = $result->besetzung;
+		$this->Template->typ = $result->typ;
+		$this->Template->epoche = $result->epoche;
             	$this->Template->todo = 'edcat';
         }
 		
