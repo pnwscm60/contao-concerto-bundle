@@ -1,9 +1,17 @@
 <?php // *** WERKLISTE *** ?>
 
 
-<h2>Werkliste</h2>
-    <div class="wlist" style="
-    <?php if($this->todo=='edcat'):
+<h2>Werkliste<div style="float:right;">< href="werkliste.html?trg=newwerk"><button value="">Neues Werk</button></a></div></h2>
+	<?php /** NEUES WERK **/ ?>
+	<div style="display:none;
+	<?php if($this->todo=='newcat'):
+    	echo 'display:block;';
+	endif;?>
+    ">
+	{{insert_content::3}}
+	</div>
+	<div class="wlist" style="
+    <?php if($this->todo=='edcat'||$this->todo=='newcat'):
     	echo 'display:none;';
 	endif;?>
     ">
