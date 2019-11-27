@@ -135,11 +135,15 @@ $GLOBALS['TL_DCA']['tl_catalog'] = array
 		),
 		'typ' => array
 		(
-			'sql'                     => "int(2) unsigned NOT NULL auto_increment"
+			'label'                   => &$GLOBALS['TL_LANG']['tl_catalog']['typ'],
+			'inputType'               => 'text',
+			'sql'                     => "int(5) unsigned NOT NULL auto_increment"
 		),
 		'epoche' => array
 		(
-			'sql'                     => "int(2) unsigned NOT NULL auto_increment"
+			'label'                   => &$GLOBALS['TL_LANG']['tl_catalog']['typ'],
+			'inputType'               => 'text',
+			'sql'                     => "int(5) unsigned NOT NULL auto_increment"
 		),
 	)
 );
