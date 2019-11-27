@@ -132,6 +132,14 @@ $GLOBALS['TL_DCA']['tl_catalog'] = array
 			'search'                  => true,
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>255, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
-		),	
+		),
+		'typ' => array
+		(
+			'sql'                     => "int(2) unsigned NOT NULL auto_increment"
+		),
+		'epoche' => array
+		(
+			'sql'                     => "int(2) unsigned NOT NULL auto_increment"
+		),
 	)
 );
