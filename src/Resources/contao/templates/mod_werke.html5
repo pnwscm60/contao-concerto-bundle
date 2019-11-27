@@ -2,7 +2,6 @@
 
 
 <h2>Werkliste</h2>
-	<?php echo $this->todo;?>
     <div class="wlist" style="
     <?php if($this->todo=='edcat'):
     	echo 'display:none;';
