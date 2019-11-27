@@ -23,7 +23,22 @@ class ModuleWerke extends \Contao\Module
 	 */
 	protected function compile()
 	{
-        $this->import('Database');
+	/* Datenbank abrufen*/
+	$this->import('Database');
+		
+	/*** ZU EDITIERENDE DATEN ABRUFEN ***/
+        if($_REQUEST['trg']=='werked'){
+            $catid = $_REQUEST['catid']; // key
+            $sql="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog WHERE tl_catalog.id = ?";
+		$result = $this->database->prepare($sql)->execute($catid);
+            	$this->Template->cid = $result->cid;
+            	$this->Template->title = $result->title;
+		$this->Template->komponistvn = $result->komponistvn;
+            	$this->Template->komponist = $result->komponist;
+            	$this->Template->besetzung = $result->besetzung;
+            	$this->Template->todo = 'edcat';
+        }
+		
         $sql ="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog ORDER by komponist, title";
         $result = $this->Database->prepare($sql)->execute();
         while($result->next())
