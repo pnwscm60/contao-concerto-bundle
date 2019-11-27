@@ -63,6 +63,5 @@ class ModuleWerke extends \Contao\Module
 			);
         }
 	$this->Template->allcat = $arrCat;
-	$this->Template->todo = 'wlist';
     }
 }
