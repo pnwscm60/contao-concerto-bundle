@@ -1,6 +1,6 @@
 <?php // *** WERKLISTE *** ?>
 
-<div class="werkliste" style="<?php if($this->todo=='edcat'): echo 'display:none;'; endif;?>">
+<div class="werkliste" style="<?php if($this->todo=='edcat'){ echo 'display:none;';}?>">
 <h2>Werkliste</h2>
     <div class="wlist">
         <div class="titzeile">
