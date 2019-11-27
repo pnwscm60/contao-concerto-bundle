@@ -34,7 +34,7 @@ class ModuleWerke extends \Contao\Module
 			$komponistvn = $_REQUEST['komponistvn'];
             $besetzung = $_REQUEST['besetzung'];
             $set = "title = '$title', komponist = '$komponist', komponistvn = '$komponistvn', besetzung = '$besetzung'";
-            $this->Database->prepare("UPDATE tl_catalog $set WHERE id=$cid;")->execute();
+            $this->Database->prepare("UPDATE tl_catalog SET $set WHERE id=$cid;")->execute();
 		$sedit = '1';
         }
 	/*** ZU EDITIERENDE DATEN ABRUFEN ***/
