@@ -30,9 +30,7 @@ class ModuleWerke extends \Contao\Module
         if($_REQUEST['trg']=='werked'){
             $catid = $_REQUEST['cid']; // key
             $sql="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog WHERE tl_catalog.id = $catid;";
-		echo $sql;
-		$result = $this->database->prepare($sql)->execute();
-
+		$result = $this->Database->prepare($sql)->execute();
             	$this->Template->cid = $result->cid;
             	$this->Template->title = $result->title;
 		$this->Template->komponistvn = $result->komponistvn;
