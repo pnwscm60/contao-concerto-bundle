@@ -4,12 +4,6 @@
 <h2>Werkliste<div style="float:right;"><a href="werkliste.html?trg=newwerk"><button class="submit btn btn-primary">Neues Werk</button></a></div></h2>
 	<?php /** NEUES WERK **/ ?>
 	
-	<?php if($this->todo=='newcat'):?>
-    	{{insert_content::3}}
-	<?phpendif;?>
-
-	
-	
 	<div class="wlist" style="
     <?php if($this->todo=='edcat'||$this->todo=='newcat'):
     	echo 'display:none;';
