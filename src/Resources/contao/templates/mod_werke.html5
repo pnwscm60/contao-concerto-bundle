@@ -1,8 +1,12 @@
 <?php // *** WERKLISTE *** ?>
 
-<div class="werkliste" style="<?php if($this->todo=='edcat'){ echo 'display:none;';}?>">
+
 <h2>Werkliste</h2>
-    <div class="wlist">
+    <div class="wlist" style="
+    <?php if($this->todo=='edcat'):
+    	echo 'display:none;';
+	endif;?>
+    ">
         <div class="titzeile">
             <div class="comp">
                 Komponist
@@ -26,9 +30,13 @@
         </div>
         <?php endforeach;?>
     </div>
-</div>
 
-<div class="ce_form first last block werkedit">
+
+<div class="ce_form first last block werkedit" style="display:none;
+<?php if($this->todo=='edcat'):
+	echo 'display:block;';
+endif;?>
+">
     <form action="werkliste.html" method="post" enctype="application/x-www-form-urlencoded">
     <div class="formbody">
         <input type="hidden" name="FORM_SUBMIT" value="auto_form_3">
