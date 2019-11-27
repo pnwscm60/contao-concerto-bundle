@@ -1,7 +1,7 @@
 <?php // *** WERKLISTE *** ?>
 
 
-<h2>Werkliste<div style="float:right;"><a href="werkliste.html?trg=newwerk"><button class="submit btn btn-primary">Neues Werk</button></a></div></h2>
+<h2>Werkliste<div style="float:right;"><a href="werkmeldung.html?trg=newwerk"><button class="submit btn btn-primary">Neues Werk</button></a></div></h2>
 	<?php /** NEUES WERK **/ ?>
 	
 	<div class="wlist" style="
