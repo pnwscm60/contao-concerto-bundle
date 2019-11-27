@@ -47,8 +47,7 @@ endif;?>
 ">
     <form action="werkliste.html" method="post" enctype="application/x-www-form-urlencoded">
     <div class="formbody">
-        <input type="hidden" name="FORM_SUBMIT" value="auto_form_3">
-	<input type="hidden" name="cid" value="<?php echo $this->cid;?>">
+        <input type="hidden" name="cid" value="<?php echo $this->cid;?>">
 	<input type="hidden" name="trg" value="swerked">
         <input type="hidden" name="REQUEST_TOKEN" value="MPrUaeJsyMChAxNV7WyYC80BKwFzTXV95Qlt3X_B_C0">
         <div class="row">
@@ -95,7 +94,7 @@ endif;?>
         </div>
 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 <div class="widget widget-submit form-group">
-<button class="submit btn btn-primary" id="ctrl_17" name="" alt="Werk speichern" title="Werk speichern">Werk speichern</button>
+<button class="submit btn btn-primary" id="ctrl_37" name="" alt="Werk speichern" title="Werk speichern">Werk speichern</button>
 </div>
 </div>
 </div>
