@@ -1,0 +1,97 @@
+<?php // *** ENSEMBLELISTE *** ?>
+
+
+<h2>Werkliste<div style="float:right;"><a href="werkmeldung.html?trg=newwerk"><button class="submit btn btn-primary">Neues Werk</button></a></div></h2>
+	<?php /** NEUES WERK **/ ?>
+	
+	<div class="wlist" style="
+    <?php if($this->todo=='edcat'||$this->todo=='newcat'):
+    	echo 'display:none;';
+	endif;?>
+    ">
+        <div class="titzeile">
+            <div class="comp">
+                Komponist
+            </div>
+            <div class="title">
+                Werktitel
+            </div>
+        </div>
+        <?php foreach($this->allcat as $cat):?>
+        <div class="werkrow">
+            <div class="comp">
+                <?php echo $cat['komponist']." ".$cat['komponistvn'];?>
+            </div>
+            <div class="title">
+                <?php echo $cat['title'];?>
+            </div>
+            <div class="icons">
+                <a href="werkliste.html?cid=<?php echo $cat['cid'];?>&trg=werked"><img src="files/images/edit.svg"></a>
+                <a href=""><img src="files/images/change.svg"></a>
+            </div>
+        </div>
+        <?php endforeach;?>
+    </div>
+
+
+<div class="ce_form first last block werkedit" style="display:none;
+<?php if($this->todo=='edcat'):
+	echo 'display:block;';
+endif;?>
+">
+    <form action="werkliste.html" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="formbody">
+        <input type="hidden" name="cid" value="<?php echo $this->cid;?>">
+	<input type="hidden" name="trg" value="swerked">
+        <input type="hidden" name="REQUEST_TOKEN" value="MPrUaeJsyMChAxNV7WyYC80BKwFzTXV95Qlt3X_B_C0">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="widget widget-text form-group">
+                <input class="form-control" id="ctrl_12" name="komponist" type="text" value="<?php echo $this->komponist;?>" placeholder="Name d. Komponisten">
+            </div>
+            <div class="widget widget-text form-group">
+                <input class="form-control" id="ctrl_18" name="komponistvn" type="text" value="<?php echo $this->komponistvn;?>" placeholder="Vorname d. Komponisten">
+            </div>
+            <div class="widget widget-text form-group">
+                <input class="form-control" id="ctrl_11" name="title" type="text" value="<?php echo $this->title;?>" placeholder="Werktitel">
+            </div>
+            <div class="widget widget-text form-group">
+                <input class="form-control" id="ctrl_13" name="besetzung" type="text" value="<?php echo $this->besetzung;?>" placeholder="Besetzung">
+            </div>
+	    	<div class="widget widget-select select form-group">
+				<select class="select form-control custom-select" id="ctrl_19" name="typ">
+					<option value="0">- Typ wählen -</option>
+					<option value="1" <?php if (!(strcmp($this->ctyp, '1'))) {echo "selected=\"selected\"";} ?>>Kantate, Oratorium, Messe, Requiem</option>
+					<option value="2" <?php if (!(strcmp($this->ctyp, '2'))) {echo "selected=\"selected\"";} ?>>Oper, Arie aus Oper</option>
+					<option value="3" <?php if (!(strcmp($this->ctyp, '3'))) {echo "selected=\"selected\"";} ?>>Ouvertüre</option>
+					<option value="4" <?php if (!(strcmp($this->ctyp, '4'))) {echo "selected=\"selected\"";} ?>>Sinfonie</option>
+					<option value="5" <?php if (!(strcmp($this->ctyp, '5'))) {echo "selected=\"selected\"";} ?>>Sinfonische Dichtung</option>
+					<option value="6" <?php if (!(strcmp($this->ctyp, '6'))) {echo "selected=\"selected\"";} ?>>Solokonzert</option>
+					<option value="7" <?php if (!(strcmp($this->ctyp, '7'))) {echo "selected=\"selected\"";} ?>>Suite</option>
+					<option value="8" <?php if (!(strcmp($this->ctyp, '8'))) {echo "selected=\"selected\"";} ?>>Tanz</option>
+				</select>
+			</div>
+			<div class="widget widget-select select form-group">
+				<select class="select form-control custom-select" id="ctrl_20" name="epoche">
+					<option value="0">- Epoche wählen -</option>
+					<option value="1" <?php if (!(strcmp($this->ctyp, '1'))) {echo "selected=\"selected\"";} ?>>Mittelalter</option>
+					<option value="2" <?php if (!(strcmp($this->ctyp, '2'))) {echo "selected=\"selected\"";} ?>>Renaissance</option>
+					<option value="3" <?php if (!(strcmp($this->ctyp, '3'))) {echo "selected=\"selected\"";} ?>>Barock</option>
+					<option value="4" <?php if (!(strcmp($this->ctyp, '4'))) {echo "selected=\"selected\"";} ?>>Klassik</option>
+					<option value="5" <?php if (!(strcmp($this->ctyp, '5'))) {echo "selected=\"selected\"";} ?>>Romantik</option>
+					<option value="6" <?php if (!(strcmp($this->ctyp, '6'))) {echo "selected=\"selected\"";} ?>>Moderne -1945</option>
+					<option value="7" <?php if (!(strcmp($this->ctyp, '7'))) {echo "selected=\"selected\"";} ?>>Moderne 1945+</option>
+				</select>
+			</div>
+	    
+	    
+        </div>
+<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+<div class="widget widget-submit form-group">
+<button class="submit btn btn-primary" id="ctrl_37" name="" alt="Werk speichern" title="Werk speichern">Werk speichern</button>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
