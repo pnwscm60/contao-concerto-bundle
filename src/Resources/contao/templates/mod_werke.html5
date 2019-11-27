@@ -31,7 +31,8 @@
     <form action="werkliste.html" method="post" enctype="application/x-www-form-urlencoded">
     <div class="formbody">
         <input type="hidden" name="FORM_SUBMIT" value="auto_form_3">
-		<input type="hidden" name="cid" value="<?php echo $this->cid;?>">
+	<input type="hidden" name="cid" value="<?php echo $this->cid;?>">
+	<input type="hidden" name="trg" value="swerked">
         <input type="hidden" name="REQUEST_TOKEN" value="MPrUaeJsyMChAxNV7WyYC80BKwFzTXV95Qlt3X_B_C0">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -45,7 +46,7 @@
                 <input class="form-control" id="ctrl_11" name="title" type="text" value="<?php echo $this->title;?>" placeholder="Werktitel">
             </div>
             <div class="widget widget-text form-group">
-                <input class="form-control" id="ctrl_13" name="Besetzung" type="text" value="<?php echo $this->besetzung;?>" placeholder="Besetzung">
+                <input class="form-control" id="ctrl_13" name="besetzung" type="text" value="<?php echo $this->besetzung;?>" placeholder="Besetzung">
             </div>
         </div>
 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
