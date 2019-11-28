@@ -10,6 +10,6 @@ use Pnwscm60\ConcertoBundle\Module\ModuleEnsemble;
 
 $GLOBALS['FE_MOD']['concerto'] = [ 
     'werke' => ModuleWerke::class,
-	'ensemble' => ModuleWerke::class,
+	'ensemble' => ModuleEnsemble::class,
 ];  
 
