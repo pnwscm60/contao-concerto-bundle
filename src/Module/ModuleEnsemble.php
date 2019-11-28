@@ -56,18 +56,18 @@ class ModuleEnsemble extends \Contao\Module
 	if($_REQUEST['trg']=='newwerk'){	
         	$this->Template->todo = 'newcat';
 	}
-	$sql ="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung FROM tl_catalog ORDER by komponist, title";
+    /*** ENSEMBLELISTE ***/    
+	$sql ="SELECT tl_ensemble.id as eid, title, website, email FROM tl_ensemble ORDER by title";
         $result = $this->Database->prepare($sql)->execute();
         while($result->next())
         {
-            $arrCat[] = array(
-		'cid' => $result->cid,
+            $arrEns[] = array(
+		'eid' => $result->eid,
 		'title' => $result->title,
-                'komponist' => $result->komponist,
-		'komponistvn' => $result->komponistvn,
-                'besetzung' => $result->besetzung,
+        'website' => $result->website,
+        'email' => $result->email,
 			);
         }
-	$this->Template->allcat = $arrCat;
+	$this->Template->allens = $arrEns;
     }
 }
