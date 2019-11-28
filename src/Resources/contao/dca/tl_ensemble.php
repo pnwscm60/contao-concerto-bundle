@@ -100,5 +100,28 @@ $GLOBALS['TL_DCA']['tl_ensemble'] = array
 			'eval'                    => array('mandatory'=>true, 'unique'=>false, 'maxlength'=>255, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
+        'website' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_ensemble']['website'],
+			'inputType'               => 'text',
+			'exclude'                 => true,
+			'sorting'                 => true,
+			'flag'                    => 11,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>false, 'unique'=>false, 'maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+        'email' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_ensemble']['email'],
+			'inputType'               => 'text',
+			'exclude'                 => true,
+			'sorting'                 => true,
+			'flag'                    => 11,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>false, 'unique'=>false, 'maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
 	)
 );
+
