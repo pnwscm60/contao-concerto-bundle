@@ -1,32 +1,26 @@
 <?php // *** ENSEMBLELISTE *** ?>
 
 
-<h2>Werkliste<div style="float:right;"><a href="werkmeldung.html?trg=newwerk"><button class="submit btn btn-primary">Neues Werk</button></a></div></h2>
-	<?php /** NEUES WERK **/ ?>
+<h2>Ensembleliste<div style="float:right;"><a href="ensemblemeldung.html?trg=newens"><button class="submit btn btn-primary">Neues Ensemble</button></a></div></h2>
+	<?php /** NEUES ENSEMBLE **/ ?>
 	
 	<div class="wlist" style="
-    <?php if($this->todo=='edcat'||$this->todo=='newcat'):
+    <?php if($this->todo=='edens'||$this->todo=='newens'):
     	echo 'display:none;';
 	endif;?>
     ">
         <div class="titzeile">
-            <div class="comp">
-                Komponist
+            <div class="ensemble">
+                Ensemble
             </div>
-            <div class="title">
-                Werktitel
-            </div>
-        </div>
-        <?php foreach($this->allcat as $cat):?>
+           </div>
+        <?php foreach($this->allens as $ens):?>
         <div class="werkrow">
-            <div class="comp">
-                <?php echo $cat['komponist']." ".$cat['komponistvn'];?>
-            </div>
             <div class="title">
-                <?php echo $cat['title'];?>
+                <?php echo $ens['title'];?>
             </div>
             <div class="icons">
-                <a href="werkliste.html?cid=<?php echo $cat['cid'];?>&trg=werked"><img src="files/images/edit.svg"></a>
+                <a href="werkliste.html?cid=<?php echo $ens['eid'];?>&trg=ensed"><img src="files/images/edit.svg"></a>
                 <a href=""><img src="files/images/change.svg"></a>
             </div>
         </div>
@@ -34,12 +28,12 @@
     </div>
 
 
-<div class="ce_form first last block werkedit" style="display:none;
-<?php if($this->todo=='edcat'):
+<div class="ce_form first last block ensedit" style="display:none;
+<?php if($this->todo=='edens'):
 	echo 'display:block;';
 endif;?>
 ">
-    <form action="werkliste.html" method="post" enctype="application/x-www-form-urlencoded">
+    <form action="ensembleliste.html" method="post" enctype="application/x-www-form-urlencoded">
     <div class="formbody">
         <input type="hidden" name="cid" value="<?php echo $this->cid;?>">
 	<input type="hidden" name="trg" value="swerked">
@@ -95,3 +89,4 @@ endif;?>
 </div>
 </form>
 </div>
+
