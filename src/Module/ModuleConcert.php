@@ -1,6 +1,6 @@
 <?php
 namespace Pnwscm60\ConcertoBundle\Module;
-class ModuleEnsemble extends \Contao\Module
+class ModuleConcert extends \Contao\Module
 {
 	/**
 	 * Template
