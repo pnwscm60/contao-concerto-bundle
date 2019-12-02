@@ -1,3 +1,26 @@
+<?php
+namespace Pnwscm60\ConcertoBundle\Module;
+class ModuleEnsemble extends \Contao\Module
+{
+	/**
+	 * Template
+	 * @var string
+	 */
+	protected $strTemplate = 'mod_concert';
+ 
+	public function generate()
+    {
+        if (TL_MODE == 'BE')
+        {
+            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate->wildcard = '### Concert ###';
+            return $objTemplate->parse();
+		}
+        return parent::generate();
+    }
+	/**
+	 * Compile the current element
+	 */
 	protected function compile()
 	{
 	/* Datenbank abrufen*/
@@ -47,3 +70,4 @@
         }
 	$this->Template->allens = $arrEns;
     }
+}
