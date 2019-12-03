@@ -17,7 +17,7 @@
                 Konzert: <?php echo $conc['cotitle'];?>
             </div>
             <div class="icons">
-                <a href="werkliste.html?cid=<?php echo $conc['coid'];?>&trg=werked"><img src="files/images/edit.svg"></a>
+                <a href="konzertmeldung.html?cid=<?php echo $conc['coid'];?>&trg=werked"><img src="files/images/edit.svg"></a>
                 <a href=""><img src="files/images/change.svg"></a>
             </div>
             <div class="coinfo">
@@ -197,5 +197,3 @@ endif;?>
     </div>
 </form>
 </div>
-
-
