@@ -31,7 +31,8 @@ class ModuleConcert extends \Contao\Module
             $this->Database->prepare("UPDATE tl_catalog SET $set WHERE id=$cid;")->execute();
 		$sedit = '1';   
     }
-	/* EDITIERTES KONZERT SPEICHERN*/
+        
+	/*** EDITIERTES KONZERT SPEICHERN ***/
 	if($_REQUEST['trg']=='savenewconc'){
             $coid = $_REQUEST['coid'];
             $title = $_REQUEST['cotitle'];
@@ -45,13 +46,12 @@ class ModuleConcert extends \Contao\Module
                     $werkids .= ",".$_REQUEST['werkids_'.$i.''];
                 }
             }
-            
             $sql='INSERT into tl_concert (tstamp,ensembleid, title, director, solisti, werkids) VALUES (NOW(),'.$ensembleid.',"'.$title.'","'.$director.'","'.$solisti.'","'.$werkids.'");';
-            echo $sql;    
-        //$result = $this->Database->prepare($sql)->execute();
+            //echo $sql;    
+            $result = $this->Database->prepare($sql)->execute();
             $this->Template->todo = 'klist';
-        
     }
+        
 	/*** ZU EDITIERENDE DATEN ABRUFEN ***/
         if($_REQUEST['trg']=='werked'){
             $catid = $_REQUEST['cid']; // key
@@ -93,8 +93,8 @@ class ModuleConcert extends \Contao\Module
 	   $this->Template->werklist = $arrWerke;
         
 	}
-    /*** ENSEMBLELISTE ***/    
-	$sql ="SELECT tl_ensemble.id as eid, title, website, email FROM tl_ensemble ORDER by title";
+    /*** KONZERTLISTE ERSTELLEN ***/    
+	$sql ="SELECT tl_concert.id as coid, title,  FROM tl_ensemble ORDER by title";
         $result = $this->Database->prepare($sql)->execute();
         while($result->next())
         {
@@ -108,3 +108,4 @@ class ModuleConcert extends \Contao\Module
 	$this->Template->allens = $arrEns;
     }
 }
+
