@@ -1,97 +1,201 @@
-<?php // *** WERKLISTE *** ?>
+<?php // *** KONZERTLISTE *** ?>
 
-
-<h2>Konzerte<div style="float:right;"><a href="werkmeldung.html?trg=newwerk"><button class="submit btn btn-primary">Neues Werk</button></a></div></h2>
+<h2>Konzerte<div style="float:right;"><a href="konzertmeldung.html?trg=newconc"><button class="submit btn btn-primary">Neues Konzert</button></a></div></h2>
 	<?php /** NEUES WERK **/ ?>
 	
-	<div class="wlist" style="
-    <?php if($this->todo=='edcat'||$this->todo=='newcat'):
+	<div class="klist" style="
+    <?php if($this->todo=='edconc'||$this->todo=='newconc'):
     	echo 'display:none;';
 	endif;?>
     ">
-        <div class="titzeile">
-            <div class="comp">
-                Komponist
+       <?php foreach($this->allconc as $conc):?>
+        <div class="concrow">
+            <div class="coensemble">
+                Ensemble: <?php echo $conc['coensemble'];?>
             </div>
             <div class="title">
-                Werktitel
-            </div>
-        </div>
-        <?php foreach($this->allcat as $cat):?>
-        <div class="werkrow">
-            <div class="comp">
-                <?php echo $cat['komponist']." ".$cat['komponistvn'];?>
-            </div>
-            <div class="title">
-                <?php echo $cat['title'];?>
+                Konzert: <?php echo $conc['cotitle'];?>
             </div>
             <div class="icons">
-                <a href="werkliste.html?cid=<?php echo $cat['cid'];?>&trg=werked"><img src="files/images/edit.svg"></a>
+                <a href="werkliste.html?cid=<?php echo $conc['coid'];?>&trg=werked"><img src="files/images/edit.svg"></a>
                 <a href=""><img src="files/images/change.svg"></a>
+            </div>
+            <div class="coinfo">
+                Dirigent: <?php echo $conc['codirector'];?>
+            </div>
+            <div class="coinfo">
+                Solisten: <?php echo $conc['codirector'];?>
+            </div>
+            <div class="cotermin">
+                Datum: <?php echo $conc['codatum'];?>
+            </div>
+            <div class="cotermin">
+                Ort: <?php echo $conc['coort'];?>
             </div>
         </div>
         <?php endforeach;?>
     </div>
 
 
-<div class="ce_form first last block werkedit" style="display:none;
-<?php if($this->todo=='edcat'):
+<div class="ce_form first last block" style="display:none;
+<?php if($this->todo=='edconc'||$this->todo=='newconc'):
 	echo 'display:block;';
 endif;?>
 ">
-    <form action="werkliste.html" method="post" enctype="application/x-www-form-urlencoded">
+<form action="konzertmeldung.html" method="post" enctype="application/x-www-form-urlencoded">
     <div class="formbody">
-        <input type="hidden" name="cid" value="<?php echo $this->cid;?>">
-	<input type="hidden" name="trg" value="swerked">
-        <input type="hidden" name="REQUEST_TOKEN" value="MPrUaeJsyMChAxNV7WyYC80BKwFzTXV95Qlt3X_B_C0">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div class="widget widget-text form-group">
-                <input class="form-control" id="ctrl_12" name="komponist" type="text" value="<?php echo $this->komponist;?>" placeholder="Name d. Komponisten">
+    <input type="hidden" name="FORM_SUBMIT" value="auto_form_4">
+    <input type="hidden" name="REQUEST_TOKEN" value="qxPAbpxHzwrEgtL5SjjFWuI4QboWPDn0yqn-u64ZfBs">
+    <input type="hidden" name="coid" value="<?php echo $this->coid;?>">
+    <?php if($this->todo=='edconc'):?>
+        <input type="hidden" name="trg" value="saveedconc">
+    <?php elseif($this->todo=='newconc'):?>
+        <input type="hidden" name="trg" value="savenewconc">
+    <?php endif;?>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="widget widget-select select form-group" id="werk_1" style="display:block">       
+                <select class="select form-control custom-select" id="ctrl_1" name="werkids_1">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid1, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_1"><img src="/files/images/plus.svg" style="height:24px;"></button>
             </div>
-            <div class="widget widget-text form-group">
-                <input class="form-control" id="ctrl_18" name="komponistvn" type="text" value="<?php echo $this->komponistvn;?>" placeholder="Vorname d. Komponisten">
+            
+            <div class="widget widget-select select form-group" id="werk_2" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_2" name="werkids_2">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid2, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_2"><img src="/files/images/plus.svg" style="height:24px;"></button>
             </div>
-            <div class="widget widget-text form-group">
-                <input class="form-control" id="ctrl_11" name="title" type="text" value="<?php echo $this->title;?>" placeholder="Werktitel">
+            
+            <div class="widget widget-select select form-group" id="werk_3" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_3" name="werkids_3">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid3, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_3"><img src="/files/images/plus.svg" style="height:24px;"></button>
             </div>
-            <div class="widget widget-text form-group">
-                <input class="form-control" id="ctrl_13" name="besetzung" type="text" value="<?php echo $this->besetzung;?>" placeholder="Besetzung">
+            
+            <div class="widget widget-select select form-group" id="werk_4" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_4" name="werkids_4">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid4, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_4"><img src="/files/images/plus.svg" style="height:24px;"></button>
             </div>
-	    	<div class="widget widget-select select form-group">
-				<select class="select form-control custom-select" id="ctrl_19" name="typ">
-					<option value="0">- Typ wählen -</option>
-					<option value="1" <?php if (!(strcmp($this->ctyp, '1'))) {echo "selected=\"selected\"";} ?>>Kantate, Oratorium, Messe, Requiem</option>
-					<option value="2" <?php if (!(strcmp($this->ctyp, '2'))) {echo "selected=\"selected\"";} ?>>Oper, Arie aus Oper</option>
-					<option value="3" <?php if (!(strcmp($this->ctyp, '3'))) {echo "selected=\"selected\"";} ?>>Ouvertüre</option>
-					<option value="4" <?php if (!(strcmp($this->ctyp, '4'))) {echo "selected=\"selected\"";} ?>>Sinfonie</option>
-					<option value="5" <?php if (!(strcmp($this->ctyp, '5'))) {echo "selected=\"selected\"";} ?>>Sinfonische Dichtung</option>
-					<option value="6" <?php if (!(strcmp($this->ctyp, '6'))) {echo "selected=\"selected\"";} ?>>Solokonzert</option>
-					<option value="7" <?php if (!(strcmp($this->ctyp, '7'))) {echo "selected=\"selected\"";} ?>>Suite</option>
-					<option value="8" <?php if (!(strcmp($this->ctyp, '8'))) {echo "selected=\"selected\"";} ?>>Tanz</option>
-				</select>
-			</div>
-			<div class="widget widget-select select form-group">
-				<select class="select form-control custom-select" id="ctrl_20" name="epoche">
-					<option value="0">- Epoche wählen -</option>
-					<option value="1" <?php if (!(strcmp($this->ctyp, '1'))) {echo "selected=\"selected\"";} ?>>Mittelalter</option>
-					<option value="2" <?php if (!(strcmp($this->ctyp, '2'))) {echo "selected=\"selected\"";} ?>>Renaissance</option>
-					<option value="3" <?php if (!(strcmp($this->ctyp, '3'))) {echo "selected=\"selected\"";} ?>>Barock</option>
-					<option value="4" <?php if (!(strcmp($this->ctyp, '4'))) {echo "selected=\"selected\"";} ?>>Klassik</option>
-					<option value="5" <?php if (!(strcmp($this->ctyp, '5'))) {echo "selected=\"selected\"";} ?>>Romantik</option>
-					<option value="6" <?php if (!(strcmp($this->ctyp, '6'))) {echo "selected=\"selected\"";} ?>>Moderne -1945</option>
-					<option value="7" <?php if (!(strcmp($this->ctyp, '7'))) {echo "selected=\"selected\"";} ?>>Moderne 1945+</option>
-				</select>
-			</div>
-	    
-	    
+            <div class="widget widget-select select form-group" id="werk_5" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_5" name="werkids_5">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid5, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_5"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            <div class="widget widget-select select form-group" id="werk_6" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_6" name="werkids_6">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid6, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_6"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            <div class="widget widget-select select form-group" id="werk_7" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_7" name="werkids_7">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid7, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_7"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            <div class="widget widget-select select form-group" id="werk_8" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_8" name="werkids_8">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid8, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_8"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            <div class="widget widget-select select form-group" id="werk_9" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_9" name="werkids_9">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid9, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_9"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            
         </div>
-<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-<div class="widget widget-submit form-group">
-<button class="submit btn btn-primary" id="ctrl_37" name="" alt="Werk speichern" title="Werk speichern">Werk speichern</button>
-</div>
-</div>
-</div>
-</div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="widget widget-select select mandatory form-group">
+                <select class="select mandatory form-control custom-select" id="ctrl_32" name="ensemble" required="">
+                    <?php if($this->ensembles): foreach($this->ensembles as $ensemble):?>
+                    <option value="<?php echo $ensemble['ensembleid']?>" <?php if (!(strcmp($this->coid, $ensemble['ensembleid']))) {echo "selected=\"selected\"";} ?>><?php echo $ensemble['ensemblename']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            </div>
+            <div class="widget widget-text mandatory form-group">
+                <input class="mandatory form-control" id="ctrl_94" name="cotitle" type="text" value="<?php echo $this->cotitle?>" required="" placeholder="Konzertbezeichnung">
+            </div>
+            <div class="widget widget-text mandatory form-group">
+                <input class="mandatory form-control" id="ctrl_95" name="codirector" type="text" value="<?php echo $this->codirector?>" required="" placeholder="Dirigent">
+            </div>
+            <div class="widget widget-text form-group">
+                <input class="form-control" id="ctrl_96" name="cosolisti" type="text" value="<?php echo $this->cosolisti?>" placeholder="Solisten">
+            </div>
+        </div>
+    </div>
+    <div class="widget widget-submit form-group">
+        <button class="submit btn btn-primary" id="ctrl_99" name="" alt="Konzert speichern" title="Konzert speichern">Konzert speichern</button>
+    </div>
+    </div>
 </form>
 </div>
+
+
