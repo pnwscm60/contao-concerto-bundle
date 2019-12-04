@@ -73,7 +73,7 @@ $GLOBALS['TL_DCA']['tl_concertdata'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'	=> 'title;director;solisti;werkids;ensembleid;'
+		'default'	=> 'ensembleid;concertid;datumzeit;ort;ksaal'
 	),
 	// Fields
 	'fields' => array
@@ -108,6 +108,17 @@ $GLOBALS['TL_DCA']['tl_concertdata'] = array
 		'ort' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_concertdata']['ort'],
+			'inputType'               => 'text',
+			'exclude'                 => true,
+			'sorting'                 => true,
+			'flag'                    => 11,
+			'search'                  => true,
+			'eval'                    => array('mandatory'=>true, 'unique'=>false, 'maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'ksaal' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_concertdata']['ksaal'],
 			'inputType'               => 'text',
 			'exclude'                 => true,
 			'sorting'                 => true,
