@@ -94,18 +94,16 @@ class ModuleConcert extends \Contao\Module
         
 	}
     /*** KONZERTLISTE ERSTELLEN ***/    
-	$sql ="SELECT tl_concert.id as coid, title,  FROM tl_ensemble ORDER by title";
+	$sql ="SELECT tl_concert.id as coid, title FROM tl_concert ORDER by title";
         $result = $this->Database->prepare($sql)->execute();
         while($result->next())
         {
             $arrEns[] = array(
-		'eid' => $result->eid,
+		'coid' => $result->coid,
 		'title' => $result->title,
-        'website' => $result->website,
-        'email' => $result->email,
+
 			);
         }
 	$this->Template->allens = $arrEns;
     }
 }
-
