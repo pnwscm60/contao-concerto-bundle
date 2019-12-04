@@ -52,8 +52,9 @@ endif;?>
     <?php elseif($this->todo=='newconc'):?>
         <input type="hidden" name="trg" value="savenewconc">
     <?php endif;?>
+    
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="background-color:#eee;border-radius:5px;padding:8px;">
             <div class="widget widget-select select form-group" id="werk_1" style="display:block">       
                 <select class="select form-control custom-select" id="ctrl_1" name="werkids_1">
                     <option value="0">– Werk auswählen –</option>
@@ -63,115 +64,45 @@ endif;?>
                 </select>
             <button class="btn btn-primary pluswerk" id="plus_1"><img src="/files/images/plus.svg" style="height:24px;"></button>
             </div>
+            <?php for($i=2;$i<11;$i++):?>
+            <div class="widget widget-select select form-group" id="werk_<?php echo $i?>" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_<?php echo $i?>" name="werkids_<?php echo $i?>">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->${'weid'.$i}, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_<?php echo $i?>"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            <?php endfor;?>
             
-            <div class="widget widget-select select form-group" id="werk_2" style="display:
-                <?php if(count($this->werke)>0):
-                       echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_2" name="werkids_2">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid2, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_2"><img src="/files/images/plus.svg" style="height:24px;"></button>
             </div>
-            
-            <div class="widget widget-select select form-group" id="werk_3" style="display:
-                <?php if(count($this->werke)>0):
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="background-color:#eee;border-radius:5px;padding:8px;">
+                <div class="widget widget-text mandatory form-group codatum" id="kon1" style="display:block;clear:left;">
+                    <input class="mandatory form-control" style="float:left;width:150px;margin-right:1em;" id="ctrl_101" name="date1" type="date" value="" required="" placeholder="dd.mm.YYYY">
+                    <input class="mandatory form-control" style="float:left;width:100px;" id="ctrl_111" name="time1" type="time" value="" required="" placeholder="hh:mm">
+                    <input class="mandatory form-control" style="float:left;width:100%;margin-bottom:0.3em;" id="ctrl_121" name="ort1" type="text" value="" required="" placeholder="Ort">
+                    <button class="btn btn-primary pluswerk" id="plusdat_1"><img src="/files/images/plus.svg" style="height:24px;"></button>
+                </div>
+                <?php for($i=2;$i<11;$i++):?> 
+                <div class="widget widget-text mandatory form-group" id="kon<?php echo $i?>" style="display:
+                    <?php if(count($this->konzdata)>0):
                        echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_3" name="werkids_3">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid3, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_3"><img src="/files/images/plus.svg" style="height:24px;"></button>
+                endif; ?>       
+                    ;clear:left;">
+                    <input class="mandatory form-control" style="float:left;width:150px;margin-right:1em;" id="ctrl_10<?php echo $i?>" name="date<?php echo $i?>" type="date" value="" required="" placeholder="dd.mm.YYYY">
+                    <input class="mandatory form-control" style="float:left;width:100px;" id="ctrl_11<?php echo $i?>" name="time<?php echo $i?>" type="time" value="" required="" placeholder="hh:mm">
+                    <input class="mandatory form-control" style="float:left;width:100%;margin-bottom:0.3em;" id="ctrl_12<?php echo $i?>" name="ort<?php echo $i?>" type="text" value="" required="" placeholder="Ort">
+                    <button class="btn btn-primary pluswerk" id="plusdat_<?php echo $i?>"><img src="/files/images/plus.svg" style="height:24px;"></button>
+                </div>
+                <?php endfor;?>
             </div>
-            
-            <div class="widget widget-select select form-group" id="werk_4" style="display:
-                <?php if(count($this->werke)>0):
-                       echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_4" name="werkids_4">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid4, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_4"><img src="/files/images/plus.svg" style="height:24px;"></button>
-            </div>
-            <div class="widget widget-select select form-group" id="werk_5" style="display:
-                <?php if(count($this->werke)>0):
-                       echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_5" name="werkids_5">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid5, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_5"><img src="/files/images/plus.svg" style="height:24px;"></button>
-            </div>
-            <div class="widget widget-select select form-group" id="werk_6" style="display:
-                <?php if(count($this->werke)>0):
-                       echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_6" name="werkids_6">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid6, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_6"><img src="/files/images/plus.svg" style="height:24px;"></button>
-            </div>
-            <div class="widget widget-select select form-group" id="werk_7" style="display:
-                <?php if(count($this->werke)>0):
-                       echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_7" name="werkids_7">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid7, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_7"><img src="/files/images/plus.svg" style="height:24px;"></button>
-            </div>
-            <div class="widget widget-select select form-group" id="werk_8" style="display:
-                <?php if(count($this->werke)>0):
-                       echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_8" name="werkids_8">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid8, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_8"><img src="/files/images/plus.svg" style="height:24px;"></button>
-            </div>
-            <div class="widget widget-select select form-group" id="werk_9" style="display:
-                <?php if(count($this->werke)>0):
-                       echo 'block'; else: echo 'none';
-                endif; ?>
-                ">       
-                <select class="select form-control custom-select" id="ctrl_9" name="werkids_9">
-                    <option value="0">– Werk auswählen –</option>
-                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
-                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid9, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
-                    <?php endforeach;endif;?>
-                </select>
-            <button class="btn btn-primary pluswerk" id="plus_9"><img src="/files/images/plus.svg" style="height:24px;"></button>
-            </div>
-            
         </div>
+        <div class="row" style="margin-top:6px;background-color:#eee;border-radius:5px;padding:8px;">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <div class="widget widget-select select mandatory form-group">
                 <select class="select mandatory form-control custom-select" id="ctrl_32" name="ensemble" required="">
@@ -190,7 +121,7 @@ endif;?>
                 <input class="form-control" id="ctrl_96" name="cosolisti" type="text" value="<?php echo $this->cosolisti?>" placeholder="Solisten">
             </div>
         </div>
-    </div>
+        </div>
     <div class="widget widget-submit form-group">
         <button class="submit btn btn-primary" id="ctrl_99" name="" alt="Konzert speichern" title="Konzert speichern">Konzert speichern</button>
     </div>
