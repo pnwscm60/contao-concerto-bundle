@@ -11,7 +11,7 @@ use Pnwscm60\ConcertoBundle\Module\ModuleConcert;
 use Pnwscm60\ConcertoBundle\Module\ModuleConcertlist;
 
 $GLOBALS['FE_MOD']['concerto'] = [ 
-    'werke' => ModuleWerke::class,
+	'werke' => ModuleWerke::class,
 	'ensemble' => ModuleEnsemble::class,
 	'concert' => ModuleConcert::class,
 	'concertlist' => ModuleConcertlist::class
