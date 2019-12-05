@@ -1,0 +1,138 @@
+<?php // *** KONZERTLISTE *** ?>
+
+<h2 style="margin-bottom:12px;">Konzerte<div style="float:right;"><a href="konzertmeldung.html?trg=newconc"><button class="submit btn btn-primary">Neues Konzert</button></a></div></h2>
+	<?php /** NEUES WERK **/ ?>
+<div class="klist" style="
+    <?php if($this->todo=='edconc'||$this->todo=='newconc'):
+    	echo 'display:none;';
+	endif;?>
+    ">
+       <?php foreach($this->konzlist as $conc):?>
+        <div class="concrow">
+            <div class="datum">
+                <?php echo $conc['datum'];?>
+            </div>
+            <div class="zeit">
+                <?php echo $conc['zeit'];?>
+            </div>
+            <div class="ort">
+                <?php echo $conc['ort'];?>, <?php echo $conc['ksaal'];?>
+            </div>
+            <div class="ensemble">
+                <?php echo $conc['title'];?>
+            </div>
+            <div class="ktitle">
+                <span class="hint--top hint--rounded" aria-label="<?php echo $conc['prog'];?>"><?php echo $conc['ktitle'];?></span>
+            </div>
+            <div class="director">
+                <?php echo $conc['director'];?><?php if($conc['solisti']!='') echo ", ".$conc['solisti'];?>
+            </div>
+        </div>
+        
+        <?php endforeach;?>
+    </div>	
+
+
+<div class="ce_form first last block" style="display:none;
+<?php if($this->todo=='edconc'||$this->todo=='newconc'):
+	echo 'display:block;';
+endif;?>
+">
+<form action="konzertmeldung.html" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="formbody">
+    <input type="hidden" name="FORM_SUBMIT" value="auto_form_4">
+    <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+    <input type="hidden" name="coid" value="<?php echo $this->coid;?>">
+    <?php if($this->todo=='edconc'):?>
+        <input type="hidden" name="trg" value="saveedconc">
+    <?php elseif($this->todo=='newconc'):?>
+        <input type="hidden" name="trg" value="savenewconc">
+    <?php endif;?>
+    
+    <div class="row">
+         
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="background-color:#eee;border-radius:5px;padding:8px;">
+            <h4 style="padding-left:8px;">Werke</h4>
+            <div class="widget widget-select select form-group" id="werk_1" style="display:block">       
+                <select class="select form-control custom-select" id="ctrl_1" name="werkids_1">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->weid1, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_1"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            <?php for($i=2;$i<11;$i++):?>
+            <div class="widget widget-select select form-group" id="werk_<?php echo $i?>" style="display:
+                <?php if(count($this->werke)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>
+                ">       
+                <select class="select form-control custom-select" id="ctrl_<?php echo $i?>" name="werkids_<?php echo $i?>">
+                    <option value="0">– Werk auswählen –</option>
+                    <?php if($this->werklist): foreach($this->werklist as $werk):?>
+                    <option value="<?php echo $werk['werkid']?>" <?php if (!(strcmp($this->${'weid'.$i}, $werk['werkid']))) {echo "selected=\"selected\"";} ?>><?php echo $werk['komp'].": ".$werk['werktitle']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            <button class="btn btn-primary pluswerk" id="plus_<?php echo $i?>"><img src="/files/images/plus.svg" style="height:24px;"></button>
+            </div>
+            <?php endfor;?>
+            
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="background-color:#eee;border-radius:5px;padding:8px;">
+                <h4 style="padding-left:8px;">Konzertdaten</h4>
+                <div class="widget widget-text mandatory form-group codatum" id="kon1" style="display:block;clear:left;">
+                    <input class="mandatory form-control" style="float:left;width:150px;margin-right:1em;" id="ctrl_101" name="date1" type="text" value="" placeholder="dd.mm.YYYY">
+                    <input class="mandatory form-control" style="float:left;width:100px;" id="ctrl_111" name="time1" type="text" value="" placeholder="hh:mm">
+                    <input class="mandatory form-control" style="float:left;width:34%;margin-right:5px;margin-bottom:0.3em;clear:left;" id="ctrl_121" name="ort1" type="text" value="" placeholder="Ort">
+                    <input class="mandatory form-control" style="float:left;width:64%;margin-bottom:0.3em;" id="ctrl_131" name="ksaal1" type="text" value="" placeholder="Konzertsaal">
+                    <button class="btn btn-primary pluswerk" id="plusdat_1"><img src="/files/images/plus.svg" style="height:24px;"></button>
+                </div>
+                <?php for($i=2;$i<11;$i++):?> 
+                <div class="widget widget-text mandatory form-group" id="kon<?php echo $i?>" style="display:
+                    <?php if(count($this->konzdata)>0):
+                       echo 'block'; else: echo 'none';
+                endif; ?>       
+                    ;clear:left;padding-top:0.3em;">
+                    <input class="mandatory form-control" style="float:left;width:150px;margin-right:1em;" id="ctrl_10<?php echo $i?>" name="date<?php echo $i?>" type="text" value="" placeholder="dd.mm.YYYY">
+                    <input class="mandatory form-control" style="float:left;width:100px;" id="ctrl_11<?php echo $i?>" name="time<?php echo $i?>" type="text" value="" placeholder="hh:mm">
+                    <input class="mandatory form-control" style="float:left;width:34%;margin-bottom:0.3em;margin-right:5px;clear:left;" id="ctrl_12<?php echo $i?>" name="ort<?php echo $i?>" type="text" value="" placeholder="Ort">
+                    <input class="mandatory form-control" style="float:left;width:64%;margin-bottom:0.3em;" id="ctrl_13<?php echo $i?>" name="ksaal<?php echo $i?>" type="text" value="" placeholder="Konzertsaal">
+                    <button class="btn btn-primary pluswerk" id="plusdat_<?php echo $i?>"><img src="/files/images/plus.svg" style="height:24px;"></button>
+                </div>
+                <?php endfor;?>
+            </div>
+        </div>
+        
+        <div class="row" style="margin-top:6px;background-color:#eee;border-radius:5px;padding:8px;">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <h4 style="padding-left:8px;">Weitere Angaben zum Konzertprogramm</h4>
+            <div class="widget widget-select select mandatory form-group">
+                <select class="select mandatory form-control custom-select" id="ctrl_32" name="ensemble" required="">
+                    <?php if($this->ensembles): foreach($this->ensembles as $ensemble):?>
+                    <option value="<?php echo $ensemble['ensembleid']?>" <?php if (!(strcmp($this->coid, $ensemble['ensembleid']))) {echo "selected=\"selected\"";} ?>><?php echo $ensemble['ensemblename']?></option>
+                    <?php endforeach;endif;?>
+                </select>
+            </div>
+            <div class="widget widget-text mandatory form-group">
+                <input class="mandatory form-control" id="ctrl_94" name="cotitle" type="text" value="<?php echo $this->cotitle?>" required="" placeholder="Konzertbezeichnung">
+            </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <h4>&nbsp;</h4>
+            <div class="widget widget-text mandatory form-group">
+                <input class="mandatory form-control" id="ctrl_95" name="codirector" type="text" value="<?php echo $this->codirector?>" required="" placeholder="Dirigent">
+            </div>
+            <div class="widget widget-text form-group">
+                <input class="form-control" id="ctrl_96" name="cosolisti" type="text" value="<?php echo $this->cosolisti?>" placeholder="Solisten">
+            </div>
+        </div>
+        </div>
+    <div class="row" style="margin-top:6px;background-color:#eee;border-radius:5px;padding:8px;">
+    <div class="widget widget-submit form-group" style="margin-top:8px;margin-bottom:8px;margin-left:1em;">
+        <button class="submit btn btn-primary" id="ctrl_99" name="" alt="Konzert speichern" title="Konzert speichern">Konzert speichern</button>
+    </div>
+    </div>
+    </div>
+</form>
+</div>
