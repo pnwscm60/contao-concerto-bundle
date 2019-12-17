@@ -40,21 +40,19 @@ class ModuleEnsemble extends \Contao\Module
 		$sedit = '1';
         }
 	/*** ZU EDITIERENDE DATEN ABRUFEN ***/
-        if($_REQUEST['trg']=='werked'){
-            $catid = $_REQUEST['cid']; // key
-            $sql="SELECT tl_catalog.id as cid, komponist, komponistvn, title, besetzung, typ, epoche FROM tl_catalog WHERE tl_catalog.id = $catid;";
+        if($_REQUEST['trg']=='ensed'){
+            $ensid = $_REQUEST['eid']; // key
+            $sql="SELECT tl_ensemble.id as eid, title, website, email, memberid FROM tl_ensemble WHERE tl_member.id = $ensid;";
 			$result = $this->Database->prepare($sql)->execute();
-            	$this->Template->cid = $result->cid;
+            	$this->Template->eid = $result->eid;
             	$this->Template->title = $result->title;
-				$this->Template->komponistvn = $result->komponistvn;
-            	$this->Template->komponist = $result->komponist;
-            	$this->Template->besetzung = $result->besetzung;
-		$this->Template->typ = $result->typ;
-		$this->Template->epoche = $result->epoche;
-            	$this->Template->todo = 'edcat';
+				$this->Template->website = $result->website;
+            	$this->Template->email = $result->email;
+            	$this->Template->memberid = $result->memberid;
+            	$this->Template->todo = 'edens';
         }
-	if($_REQUEST['trg']=='newwerk'){	
-        	$this->Template->todo = 'newcat';
+	if($_REQUEST['trg']=='newens'){	
+        	$this->Template->todo = 'newens';
 	}
     /*** ENSEMBLELISTE ***/    
 	$sql ="SELECT tl_ensemble.id as eid, title, website, email FROM tl_ensemble ORDER by title";
@@ -68,6 +66,19 @@ class ModuleEnsemble extends \Contao\Module
         'email' => $result->email,
 			);
         }
+    //    
+    $sqlm = "SELECT id,lastname,firstname from tl_member ORDER by lastname,firstname;";
+        $mresult = $this->Database->prepare($sqlm)->execute();
+        while($mresult->next())
+        {
+            $arrMem[] = array(
+		'mid' => $mresult->id,
+		'lastname' => $mresult->lastname,
+        'firstname' => $mresult->firstname,
+        'email' => $result->email,
+			);
+        }
+    $this->Template->allmem = $arrMem;    
 	$this->Template->allens = $arrEns;
     }
 }
