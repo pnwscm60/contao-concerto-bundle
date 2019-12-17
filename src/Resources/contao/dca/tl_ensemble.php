@@ -122,6 +122,12 @@ $GLOBALS['TL_DCA']['tl_ensemble'] = array
 			'eval'                    => array('mandatory'=>false, 'unique'=>false, 'maxlength'=>255, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
+	'memberid' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_ensemble']['memberid'],
+			'inputType'               => 'text',
+			'sql'                     => "int(3) unsigned NOT NULL default '0'"
+		),
 	)
 );
 
